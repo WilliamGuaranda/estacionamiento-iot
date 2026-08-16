@@ -388,7 +388,7 @@ body {
 
 /* ====== Mapa ====== */
 .mapa-container {
-  height: 24rem;
+  height: 20rem; /* o 400px, o lo que prefieras */
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
@@ -545,6 +545,7 @@ body {
   border-radius: 1rem;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;   /* ← Añade este margen */
 }
 
 .mapa-panel h2 {
