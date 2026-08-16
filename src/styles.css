@@ -691,3 +691,16 @@ body {
 .app-main {
   flex: 1;
 }
+
+.historial-empty {
+  padding: 1rem 0;
+  color: #64748b;
+}
+
+.historial-chart {
+  height: 250px;
+}
+
+.mono {
+  font-family: monospace;
+}
