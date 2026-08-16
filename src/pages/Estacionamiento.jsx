@@ -53,6 +53,7 @@ export default function Estacionamiento() {
         setFiltroEstado={setFiltroEstado}
       />
 
+      {/* Leyenda */}
       <div className="leyenda">
         <span className="leyenda-item">
           <span className="leyenda-dot leyenda-dot-libre"></span> Libre
@@ -68,20 +69,19 @@ export default function Estacionamiento() {
         </span>
       </div>
 
-      <div className="estacionamiento-layout">
-        <div>
-          <CuadriculaEstacionamiento
-            espacios={espacios}
-            filtroColumna={filtroColumna}
-            filtroEstado={filtroEstado}
-            onSeleccionar={(id) => navigate(`/espacios/${id}`)}
-          />
-        </div>
-        <div className="mapa-panel">
-          <h2>Ubicación en el mapa</h2>
-          <MapaEstacionamiento espacios={espaciosFiltrados} />
-        </div>
+      {/* Mapa a ancho completo, debajo de los filtros/leyenda */}
+      <div className="mapa-panel">
+        <h2>Ubicación en el mapa</h2>
+        <MapaEstacionamiento espacios={espaciosFiltrados} />
       </div>
+
+      {/* Cuadrícula de espacios */}
+      <CuadriculaEstacionamiento
+        espacios={espacios}
+        filtroColumna={filtroColumna}
+        filtroEstado={filtroEstado}
+        onSeleccionar={(id) => navigate(`/espacios/${id}`)}
+      />
     </div>
   )
 }

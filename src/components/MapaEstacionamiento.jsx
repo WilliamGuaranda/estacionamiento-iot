@@ -8,13 +8,11 @@ import {
 } from 'react-leaflet'
 import { BOUNDS } from '../services/coordenadas'
 
-// Componente auxiliar para ajustar los límites del mapa automáticamente
 function FitBounds({ bounds, padding }) {
   const map = useMap()
 
   useEffect(() => {
     if (!map) return
-    // Pequeño retardo para asegurar que el contenedor tenga dimensiones
     const timeout = setTimeout(() => {
       map.fitBounds(bounds, { padding: padding || [20, 20] })
     }, 100)
@@ -25,20 +23,16 @@ function FitBounds({ bounds, padding }) {
 }
 
 export default function MapaEstacionamiento({ espacios = [] }) {
-  // Límites generales del terreno
   const boundsTerreno = [
     [BOUNDS.norte, BOUNDS.oeste],
     [BOUNDS.sur, BOUNDS.este],
   ]
 
-  // Centro inicial: enfocado en la parte superior de las columnas
-  // (ligeramente desplazado hacia el norte y centrado en longitud)
   const centroSuperior = [
-    BOUNDS.norte - 0.00001, // un poco más al norte para ver las primeras filas
+    BOUNDS.norte - 0.00001,
     (BOUNDS.oeste + BOUNDS.este) / 2,
   ]
 
-  // Filtra solo los espacios que tengan boundingBox definido
   const espaciosValidos = espacios.filter(
     (espacio) =>
       espacio?.ubicacion?.boundingBox?.norte !== undefined &&
@@ -50,12 +44,9 @@ export default function MapaEstacionamiento({ espacios = [] }) {
   return (
     <MapContainer
       center={centroSuperior}
-      zoom={18}  // puedes ajustar a 19 si quieres más detalle
+      zoom={18}
       className="mapa-container"
-      style={{ height: '100%', width: '100%' }}
     >
-      {/* Ajusta la vista para que se vean todos los espacios (opcional) */}
-      {/* Si solo quieres centrar la parte superior, comenta esta línea */}
       <FitBounds bounds={boundsTerreno} padding={[25, 25]} />
 
       <TileLayer
